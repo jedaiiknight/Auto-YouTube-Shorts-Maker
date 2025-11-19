@@ -4,7 +4,7 @@ import time
 import yfinance as yf
 import matplotlib.pyplot as plt
 import moviepy.editor as mpy
-from elevenlabs import generate, save
+from elevenlabs.client import ElevenLabs
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 from google.oauth2.credentials import Credentials
@@ -128,8 +128,13 @@ def generate_script():
 
 def make_video(script):
     # TTS
-    audio = generate(text=script, voice=random.choice(VOICES), model="eleven_turbo_v2_5", api_key=ELEVENLABS_API_KEY)
-    save(audio, "voice.mp3")
+    client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
+audio = client.generate(
+    text=script,
+    voice=random.choice(VOICES),
+    model="eleven_turbo_v2_5"
+)
+client.save(audio, "voice.mp3")
 
     # Background
     bg_url = random.choice(backgrounds)
