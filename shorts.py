@@ -2,7 +2,7 @@
 from dotenv import load_dotenv
 import random
 import os
-import openai
+import gemini
 from gtts import gTTS
 from moviepy.editor import *
 import moviepy.video.fx.crop as crop_vid
@@ -20,12 +20,12 @@ title = random.choice(titles)
 option = input('Do you want AI to generate content? (yes/no) >  ')
 
 if option == 'yes':
-    # Generate content using OpenAI API
+    # Generate content using gemini API
     theme = input("\nEnter the theme of the video >  ")
 
     ### MAKE .env FILE AND SAVE YOUR API KEY ###
-    openai.api_key = os.environ["OPENAI_API"]
-    response = openai.Completion.create(
+    gemini.api_key = os.environ["gemini_API"]
+    response = gemini.Completion.create(
         engine="gpt-3.5-turbo-instruct",
         prompt=f"Act as an script writer who writes engaging and professional scripts for tiktok shorts. you never do a grammatical mistake and write very engaging scripts that touches the viewers' attention. At the beginning of the video you never forget to add a viral hook that will catch the viewers attention and will break the scroll. Your scripts are so loved by users that they subscribe and follow the channel. Don't mention any channel's name but at appropriate point tell the viewer to like the video and follow or subscribe the channel or account. (Remember tiktok shorts have max limit of 1 min). Now Generate content on - \"{theme}\"",
         temperature=0.7,
