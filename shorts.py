@@ -9,7 +9,14 @@ import moviepy.video.fx.crop as crop_vid
 load_dotenv()
 
 # Ask for video info
-title = input("\nEnter the name of the video >  ")
+titles = [
+    "If $100 in Bitcoin 5 Years Ago...",
+    "Top Stock to Buy Right Now",
+    "Crypto Moon Shot Alert",
+    "Avoid This Money Mistake",
+    "Side Hustle to $1k/Day"
+]
+title = random.choice(titles)
 option = input('Do you want AI to generate content? (yes/no) >  ')
 
 if option == 'yes':
