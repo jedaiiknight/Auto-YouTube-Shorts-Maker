@@ -5,4 +5,4 @@ gtts==2.2.3
 moviepy==1.0.3
 yfinance
 matplotlib==3.9.2
-elevenlabs==0.3.1
+elevenlabs==1.9.0
